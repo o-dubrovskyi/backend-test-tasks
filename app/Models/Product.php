@@ -25,9 +25,13 @@ class Product extends Model
         'updated_at',
     ];
 
+    /**
+     * @var mixed
+     */
+    private mixed $categories;
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'categories_products');
+        return $this->belongsToMany(Category::class, 'products_categories');
     }
 }
