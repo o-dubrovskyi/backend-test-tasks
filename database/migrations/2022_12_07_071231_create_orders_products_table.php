@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products_orders', function (Blueprint $table) {
+        Schema::create('orders_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('product_id');
-            $table->foreign('product_id')
-                ->references('id')
-                ->on('products')
-                ->onDelete('cascade');
             $table->string('order_id');
             $table->foreign('order_id')
                 ->references('id')
                 ->on('orders')
+                ->onDelete('cascade');
+            $table->string('product_id');
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
                 ->onDelete('cascade');
             $table->timestamps();
         });
