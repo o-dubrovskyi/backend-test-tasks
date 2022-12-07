@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories_products', function (Blueprint $table) {
+        Schema::create('products_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('category_id');
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
             $table->string('product_id');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
+                ->onDelete('cascade');
+            $table->string('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
                 ->onDelete('cascade');
             $table->timestamps();
         });
