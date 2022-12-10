@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('products_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('product_id');
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
-            $table->string('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
