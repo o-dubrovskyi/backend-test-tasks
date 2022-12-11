@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class OrderSeeder extends Seeder
 {
@@ -26,13 +25,11 @@ class OrderSeeder extends Seeder
                 $orderPrice += $orderProduct->price;
             }
 
-            DB::table('orders')->insert([
+            /** @var Order $order */
+            $order = Order::factory()->createOne([
                 'price' => $orderPrice,
-                'updated_at' => new \DateTime(),
-                'created_at' => new \DateTime(),
             ]);
 
-            $order = Order::all()->last();
             $order->products()->attach(
                 $orderProducts->pluck('id')->toArray()
             );

@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Currency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class ProductFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +16,6 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'name' => fake()->unique()->domainName(),
-            'price' => $this->faker->numberBetween(9, 999),
-        ];
+        return [];
     }
 }

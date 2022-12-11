@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -15,150 +14,92 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Appliances',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Apps & Games',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Arts, Crafts, & Sewing',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Automotive Parts & Accessories',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Baby',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Beauty & Personal Care',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Books',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'CDs & Vinyl',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Cell Phones & Accessories',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Clothing, Shoes and Jewelry',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Collectibles & Fine Art',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Computers',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Electronics',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Garden & Outdoor',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Grocery & Gourmet Food',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Handmade',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Health, Household & Baby Care',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Home & Kitchen',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Industrial & Scientific',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Kindle',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Luggage & Travel Gear',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Movies & TV',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Musical Instruments',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Office Products',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Pet Supplies',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Sports & Outdoors',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Tools & Home Improvement',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Toys & Games',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
-        DB::table('categories')->insert([
+        Category::factory()->createOne([
             'name' => 'Video Games',
-            'updated_at' => new \DateTime(),
-            'created_at' => new \DateTime(),
         ]);
     }
 }
