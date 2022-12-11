@@ -5,6 +5,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderProductController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\v2\ProductController as V2ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,8 @@ Route::prefix('v1')->group(function () {
     Route::resource('orders', OrderController::class);
     Route::resource('orders/{orderId}/products', OrderProductController::class);
 });
+
+Route::prefix('v2')->group(function () {
+    Route::resource('products', V2ProductController::class);
+});
+

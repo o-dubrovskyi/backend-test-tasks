@@ -1,24 +1,46 @@
 <?php
 
-namespace App\Http\v2\Controllers;
+namespace App\Http\Controllers\v2;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
+use App\Services\ProductPriceService;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct(private ProductPriceService $productPriceService)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return ProductCollection
      */
-    public function index(): ProductCollection
+    public function index(Request $request): ProductCollection
     {
+        $targetCurrency = $request->get('currency');
+
         return new ProductCollection(
-            Product::all()
+            Product::all()->map(function (Product $product) use ($targetCurrency) {
+                $price = $product->offsetGet('price');
+                $sourceCurrency = $product->offsetGet('currency_code');
+
+                if ($targetCurrency
+                    && $targetCurrency !== $sourceCurrency
+                ) {
+                    $targetPrice = $this->productPriceService->calculate($price, $sourceCurrency, $targetCurrency);
+
+                    return array_replace_recursive($product->toArray(), [
+                        'price' => $targetPrice,
+                        'currency_code' => $targetCurrency,
+                    ]);
+                }
+
+                return $product->toArray();
+            })
         );
     }
 
@@ -28,8 +50,27 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product, Request $request)
     {
-        return response($product->toArray());
+        $targetCurrency = $request->get('currency');
+        $sourceCurrency = $product->offsetGet('currency_code');
+        $price = $product->offsetGet('price');
+
+        $productArr = $product->toArray();
+
+        if ($targetCurrency
+            && $targetCurrency !== $sourceCurrency
+        ) {
+            $targetPrice = $this->productPriceService->calculate($price, $sourceCurrency, $targetCurrency);
+
+            $preparedProduct = array_replace_recursive($productArr, [
+                'price' => $targetPrice,
+                'currency_code' => $targetCurrency,
+            ]);
+
+            return response($preparedProduct);
+        }
+
+        return response($productArr);
     }
 }
