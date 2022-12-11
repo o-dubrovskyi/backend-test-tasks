@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\ProductCollection;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -11,11 +12,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ProductCollection
      */
-    public function index()
+    public function index(): ProductCollection
     {
-        return Product::all();
+        return new ProductCollection(
+            Product::all()
+        );
     }
 
     /**

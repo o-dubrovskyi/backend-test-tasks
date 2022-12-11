@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('price')->nullable(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

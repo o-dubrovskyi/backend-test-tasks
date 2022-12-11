@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryCollection;
 use App\Models\Category;
 use App\Models\Dataset;
 use Illuminate\Http\Response;
@@ -13,11 +14,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return CategoryCollection
      */
-    public function index()
+    public function index(): CategoryCollection
     {
-        return Category::all();
+        return new CategoryCollection(
+            Category::all()
+        );
     }
 
     /**

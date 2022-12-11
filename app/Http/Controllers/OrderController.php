@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Resources\OrderCollection;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -11,11 +12,13 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return OrderCollection
      */
-    public function index()
+    public function index(): OrderCollection
     {
-        return Order::all();
+        return new OrderCollection(
+            Order::all()
+        );
     }
 
     /**

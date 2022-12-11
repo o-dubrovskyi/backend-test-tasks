@@ -19,13 +19,12 @@ return new class extends Migration
             $table->foreign('order_id')
                 ->references('id')
                 ->on('orders')
-                ->onDelete('cascade');
+                ->restrictOnDelete();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
-                ->onDelete('cascade');
-            $table->timestamps();
+                ->restrictOnDelete();
         });
     }
 
