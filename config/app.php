@@ -212,4 +212,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'currency' => [
+        'source' => 'USD',
+        'endpoint' => 'https://api.apilayer.com/currency_data/',
+        'apikey' => 'Qq4eboeykGD5cTwTk2Ql3H6WRB97WiUk',
+    ],
 ];
