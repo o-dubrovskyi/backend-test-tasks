@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\CurlService;
 use App\Services\CurrencyInfoService;
+use App\Services\ProductPriceService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $appConfig = config('app');
+
+        $this->app->singleton(ProductPriceService::class, function () {
+            return new ProductPriceService();
+        });
 
         $this->app->singleton(CurlService::class, function () {
             return new CurlService();
