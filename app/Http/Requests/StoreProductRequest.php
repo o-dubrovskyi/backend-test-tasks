@@ -26,6 +26,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => 'required|string|unique:products|min:3|max:255',
             'price' => 'required|numeric',
+            'currency_code' => 'required|string||min:3|max:3|exists:currencies,code',
         ];
     }
 }

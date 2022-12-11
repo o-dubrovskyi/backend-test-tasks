@@ -26,6 +26,7 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'string|unique:products|min:3|max:255',
             'price' => 'numeric',
+            'currency_code' => 'string||min:3|max:3|exists:currencies,code',
         ];
     }
 }

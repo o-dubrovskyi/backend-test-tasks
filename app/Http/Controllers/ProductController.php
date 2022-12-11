@@ -33,6 +33,7 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $validated['name'],
             'price' => $validated['price'],
+            'currency_code' => $validated['currency_code'],
         ]);
 
         return response($product);
@@ -59,9 +60,11 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $validated = $request->validated();
+
         $product->update([
-            'name' => $validated['name'] || $product->name,
-            'price' => $validated['price'] || $product->price,
+            'name' => $validated['name'],
+            'price' => $validated['price'],
+            'currency_code' => $validated['currency_code'],
         ]);
 
         return response($product);
