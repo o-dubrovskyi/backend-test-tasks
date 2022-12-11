@@ -19,7 +19,8 @@ class ProductFactory extends Factory
     {
         return [
             'name' => fake()->unique()->domainName(),
-            'price' => $this->faker->numberBetween(9, 999),
+            'price' => $this->faker->randomFloat(null, 9, 999),
+            'currency_code' => Currency::all()->random()->code,
         ];
     }
 }

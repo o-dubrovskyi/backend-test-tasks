@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->string('price')->nullable(false);
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->char('currency_code', 3);
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::table('products', function (Blueprint $table) {
+            $table->removeColumn('currency_code');
+        });
     }
 };
